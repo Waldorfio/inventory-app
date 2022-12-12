@@ -26,4 +26,4 @@ GameSchema.virtual("release_formatted").get(function () {
   });
 
 // Export model
-module.exports = mongoose.model("Game", GameSchema)
+module.exports = mongoose.model("Game", GameSchema);
