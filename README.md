@@ -10,7 +10,7 @@ A full-stack inventory application with CRUD abilities.
 - Practice creating a full-fledged Express app, with CRUD capabilities
 
 ### Challenges Faced
--
+- Managing controllers, models and route structure efficiently.
 
 ## How to run the app
 This section is TBA, for now, you can click on the Live link above.
