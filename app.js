@@ -6,6 +6,7 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const mainRouter = require('./routes/mainRouter');  // *Added import main route
 
 const app = express();
 
@@ -21,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/gameLibrary', gameRouter); // Added game router
+app.use('/mainRouter', mainRouter); // *Added main router
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -39,7 +40,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-// Set up mongoose connection
+// * Set up mongoose connection
 const mongoose = require("mongoose");
 const mongoDB = "insert_your_database_url_here";
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
