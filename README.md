@@ -1,6 +1,6 @@
 # Inventory Application
 
-A full-stack inventory application with CRUD abilities.
+An inventory management API, with CRUD capabalities. Created using Node.js, Express, and MongoDB.
 ## [Live Link 👈]()
 
 ### Features
@@ -17,5 +17,8 @@ This section is TBA, for now, you can click on the Live link above.
 
 ## Dependencies
 - Express
-- nodemon
-- express router
+- Mongoose
+- Nodemon
+- Async
+- Luxon
+- Express router
