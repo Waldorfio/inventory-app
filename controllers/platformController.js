@@ -5,45 +5,49 @@ const { body, validationResult } = require('express-validator');
 const async = require('async');
 
 
-// TODO: Display form to create platform
-exports.platform_create_get = function (req, res, next) {
-    res.render('platform_form');
-};
-// TODO: Handle form data from above
-exports.platform_create_post = [
-    body('Platform Name', 'Invalid Name') // TODO: crosscheck name field with forms name field
-        .trim()
-        .isLength({ min: 1 })
-        .escape(),
-]
-
-// TODO: Display form to update platform
-exports.platform_update_get = function (req, res, next) {
-    // TODO: Search for platform if exists, display error if not, otherwise...
-    // TODO: Need to render the same platform_form, but this time with the title "Update form".
-}
-// TODO: platform_update_post
-exports.platform_update_post = [
-    body('Platform Name', 'Invalid Name') // TODO: crosscheck name field with forms name field
-        .trim()
-        .isLength({ min: 1 })
-        .escape(),
-]
-
-// TODO: Display form to delete platform
-exports.platform_delete_get = function (req, res, next) {
-}
-// TODO: platform_delete_post
-exports.platform_delete_post = [
-
-]
-
-// TODO: Display list of all platforms
-exports.platform_list = function (req, res, next) {
-    Game.find()
+const platform_create = async (req, res) => {
+  try {
+    await Platform.create({
+      name: req.body.name,
+    })
+    console.log('Platform created! ('+req.body.name+')');
+  } catch(err) {
+    console.error(err);
+  }   
 }
 
-// TODO: Display detail for one platform
-exports.platform_detail = function (req, res, next) {
-    
+const platform_read = async (req, res) => {
+  try {
+    await Platform.find()
+  } catch(err) {
+    console.error(err);
+  }
+}
+
+const platform_update = async (req, res) => {
+  try {
+    await Platform.findByIdAndUpdate(
+      { _id: id },
+      { $set: { name: req.body.name } }
+    )
+    console.log(' Platform updated! ('+req.body.name+')');
+  } catch(err) {
+    console.error(err);
+  }
+}
+
+const platform_destroy = async (req, res) => {
+  try {
+    await Platform.findByIdAndDelete(req.params.id);
+    console.log('Platform deleted! ('+req.params.id+')');
+  } catch(err) {
+    console.error(err);
+  }
+}
+
+module.exports = {
+  platform_create,
+  platform_read,
+  platform_update,
+  platform_destroy,
 }
