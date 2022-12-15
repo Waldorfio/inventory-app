@@ -4,15 +4,49 @@ const Publisher = require('../models/publisher');
 const { body, validationResult } = require('express-validator');
 const async = require('async');
 
-// TODO: publisher_create_get (display form to create publisher)
-// TODO: publisher_create_post
+const publisher_create = async (req, res) => {
+  try {
+    await Publisher.create({
+      name: req.body.name,
+    })
+    console.log('Publisher created! ('+req.body.name+')');
+  } catch(err) {
+    console.error(err);
+  }   
+}
 
-// TODO: publisher_update_get (display form to update publisher)
-// TODO: publisher_update_post
+const publisher_read = async (req, res) => {
+  try {
+    await Publisher.find()
+  } catch(err) {
+    console.error(err);
+  }
+}
 
-// TODO: publisher_delete_get (display form to delete publisher)
-// TODO: publisher_delete_post
+const publisher_update = async (req, res) => {
+  try {
+    await Publisher.findByIdAndUpdate(
+      { _id: id },
+      { $set: { name: req.body.name } }
+    )
+    console.log('Publisher updated! ('+req.body.name+')');
+  } catch(err) {
+    console.error(err);
+  }
+}
 
-// TODO: publisher_list (display list of all publishers)
+const publisher_destroy = async (req, res) => {
+  try {
+    await Publisher.findByIdAndDelete(req.params.id);
+    console.log('Publisher deleted! ('+req.params.id+')');
+  } catch(err) {
+    console.error(err);
+  }
+}
 
-// TODO: publisher_detail (display detail for one publisher)
+module.exports = {
+  publisher_create,
+  publisher_read,
+  publisher_update,
+  publisher_destroy,
+}
