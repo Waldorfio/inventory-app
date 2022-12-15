@@ -1,6 +1,6 @@
 # Inventory Application
 
-An inventory management API, with CRUD capabalities. Created using Node.js, Express, and MongoDB.
+An inventory management API, with CRUD capabilities. Created using Node.js, Express, and MongoDB.
 ## [Live Link 👈]()
 
 ### Features
