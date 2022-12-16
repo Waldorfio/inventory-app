@@ -7,11 +7,12 @@ const async = require('async');
 
 // TODO: exports.index
 const index = async (req, res, next) => {
-  try {
-    const game_list = await Game.find();
-    console.log('List of all games: '+game_list);
-  } catch(err) {
-    console.error(err);
+    try {
+        const game_list = await Game.find();
+        console.log('List of all games: '+game_list);
+    } catch(err) {
+        console.error(err);
+    }
 }
 
 const game_create = async (req, res) => {
