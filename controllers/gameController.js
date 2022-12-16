@@ -17,7 +17,15 @@ const index = async (req, res, next) => {
 const game_create = async (req, res) => {
   try {
     await Game.create({
-      name: req.body.name, // TODO: Add other document fields for game
+      title: req.body.title,
+      summary: req.body.summary,
+      edition: req.body.edition,
+      review: req.body.review,
+      price: req.body.price,
+      discount: req.body.discount,
+      release: req.body.release,
+      platform: req.body.platform,
+      publisher: req.body.publisher,
     })
     console.log('Game created! ('+req.body.name+')');
   } catch(err) {
@@ -37,7 +45,17 @@ const game_update = async (req, res) => {
   try {
     await Game.findByIdAndUpdate(
       { _id: id },
-      { $set: { name: req.body.name } }  // TODO: Clarify
+      { $set: { 
+        title: req.body.title,
+        summary: req.body.summary,
+        edition: req.body.edition,
+        review: req.body.review,
+        price: req.body.price,
+        discount: req.body.discount,
+        release: req.body.release,
+        platform: req.body.platform,
+        publisher: req.body.publisher,
+        } }
     )
     console.log('Game updated! ('+req.body.name+')');
   } catch(err) {
