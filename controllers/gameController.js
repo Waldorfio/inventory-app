@@ -10,6 +10,11 @@ const index = async (req, res, next) => {
     try {
         const game_list = await Game.find();
         console.log('List of all games: '+game_list);
+        res.render('games', {
+            testParam: 'testing 123',
+            games: game_list
+        });
+
     } catch(err) {
         console.error(err);
     }
@@ -17,7 +22,8 @@ const index = async (req, res, next) => {
 
 const game_create = async (req, res) => {
   try {
-    await Game.create({
+    console.log('Creating game...')
+    const newGame = await Game.create({
       title: req.body.title,
       summary: req.body.summary,
       edition: req.body.edition,
@@ -25,10 +31,11 @@ const game_create = async (req, res) => {
       price: req.body.price,
       discount: req.body.discount,
       release: req.body.release,
-      platform: req.body.platform,
-      publisher: req.body.publisher,
+    //   platform: req.body.platform, // TODO ADD PLATFORM AND PUBLISHER DROPDOWN, and RE-ENABLE MODEL
+    //   publisher: req.body.publisher, // TODO ADD PLATFORM AND PUBLISHER DROPDOWN, and RE-ENABLE MODEL
     })
-    console.log('Game created! ('+req.body.name+')');
+    console.log('Game created! ('+newGame+')');
+    res.redirect('/');
   } catch(err) {
     console.error(err);
   }   

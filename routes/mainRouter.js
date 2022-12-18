@@ -6,12 +6,10 @@ const gameController = require('../controllers/gameController');
 const platformController = require('../controllers/platformController');
 const publisherController = require('../controllers/publisherController');
 
-// //homepage
-// router.get('/', gameController.index);
-
 // GAME ROUTES
-router.get('./games', gameController.index); // index
-router.post('./game/create', gameController.game_create); // CREATE
+router.get('/games', gameController.index); // index
+router.get('/game/create', async (req, res) => {res.render('gameform')}); // CREATE FORM
+router.post('/game/create', gameController.game_create); // CREATE  // TODO ADD PLATFORM AND PUBLISHER DROPDOWN, and RE-ENABLE MODEL
 router.get('./game/:id', gameController.game_read); // READ
 router.post('./game/:id/update', gameController.game_update); // UPDATE
 router.post('./game/:id', gameController.game_destroy); // DESTROY
