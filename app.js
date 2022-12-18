@@ -3,12 +3,14 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const dotenv = require("dotenv"); // *Added dotenv
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const mainRouter = require('./routes/mainRouter');  // *Added import main route
 
 const app = express();
+dotenv.config(); // *Added initialising dotenv
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -42,7 +44,8 @@ app.use(function(err, req, res, next) {
 
 // Set up mongoose connection
 const mongoose = require("mongoose");
-const mongoDB = "mongodb+srv://admin:ZHMIFvJ4ZXj4kB0A@cluster0.0lvrsmq.mongodb.net/?retryWrites=true&w=majority";
+ // *Added dotenv protected url
+const mongoDB = 'mongodb+srv://'+process.env.DB_USERNAME+':'+process.env.DB_PASSWORD+'@cluster0.0lvrsmq.mongodb.net/?retryWrites=true&w=majority'
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
