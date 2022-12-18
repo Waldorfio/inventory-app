@@ -11,8 +11,8 @@ const GameSchema = new Schema({
     price: { type: Number, required: true },
     discount: { type: Number, required: true },
     release: { type: Date, required: true, default: Date.now },
-    platform: [{ type: Schema.ObjectId, ref: "Platform" }],
-    publisher: [{ type: Schema.ObjectId, ref: "Publisher" }],
+    // platform: [{ type: Schema.ObjectId, ref: "Platform" }],
+    // publisher: [{ type: Schema.ObjectId, ref: "Publisher" }],
 })
 
 // Virtual properties
