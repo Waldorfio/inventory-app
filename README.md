@@ -1,10 +1,10 @@
 # Inventory Application
 
 An inventory management API, with CRUD capabilities. Created using Node.js, Express, and MongoDB.
-## [Live Link 👈]()
+## [Live Link 👈](https://inventory-app-production-f822.up.railway.app/)
 
 ### Features
-- a
+- Create, Read, Update, and Destroy game models managed using MongoDB.
 
 ### Goals
 - Practice creating a full-fledged Express app, with CRUD capabilities
