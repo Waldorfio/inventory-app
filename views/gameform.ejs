@@ -1,13 +1,13 @@
 <h1>Game Form</h1>
-<form method="POST" action="/game/create">
+<form method="POST" action=<%= action %>>
     <p>This form will <%= type %> a Game</p>
-    <input name='title' type="text" placeholder="Title">
-    <input name='summary' type="text" placeholder="Summary">
-    <input name='edition' type="text" placeholder="Edition">
-    <input name='review' type="text" placeholder="Review">
-    <input name='price' type="number" placeholder="Price">
-    <input name='discount' type="number" placeholder="Discount">
-    <input name='release' type="date" placeholder="Release Date">
+    <input name='title' type="text" value=<%= title %> placeholder="Title">
+    <input name='summary' type="text" value=<%= summary %> placeholder="Summary">
+    <input name='edition' type="text" value=<%= edition %> placeholder="Edition">
+    <input name='review' type="text" value=<%= review %> placeholder="Review">
+    <input name='price' type="number"  value=<%= price %> placeholder="Price">
+    <input name='discount' type="number" value=<%= discount %> placeholder="Discount">
+    <input name='release' type="date" value=<%= release %> placeholder="Release Date">
     <!-- <input name='platform' type="text" placeholder="Platform *TODO DROPDOWN">
     <input name='publisher' type="text" placeholder="Publisher *TODO DROPDOWN"> -->
     <input type="submit" value=<%= type %>>

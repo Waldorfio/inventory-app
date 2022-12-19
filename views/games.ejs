@@ -9,8 +9,8 @@
     <h4><<%= game.price%></h4>
     <h4><%= game.discount%></h4>
     <p><i><%= game.release%></i></p>
-    <a href='/game/game.id/update'>Edit</a>
-    <a href='/game/game.id/delete'>Delete</a>
+    <a href=<%='/game/'+game.id%>>Edit</a>
+    <a href=<%='/game/'+game.id+'/delete'%>>Delete</a>
   </div>
 <% } %>
 

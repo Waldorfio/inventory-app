@@ -9,9 +9,7 @@ const async = require('async');
 const index = async (req, res, next) => {
     try {
         const game_list = await Game.find();
-        console.log('List of all games: '+game_list);
         res.render('games', {
-            testParam: 'testing 123',
             games: game_list
         });
 
@@ -43,7 +41,20 @@ const game_create = async (req, res) => {
 
 const game_read = async (req, res) => {
   try {
-    await Game.find() // TODO: Fix find function
+    const foundgame = await Game.findById(req.params.id);
+    console.log('---------------');
+    console.log('found game');
+    res.render('gameform', {
+        type: 'Update',
+        action:'/game/'+foundgame.id,
+        title: foundgame.title,
+        summary: foundgame.summary,
+        edition: foundgame.edition,
+        review: foundgame.review,
+        price: foundgame.price,
+        discount: foundgame.discount,
+        release: foundgame.release,
+    })
   } catch(err) {
     console.error(err);
   }
@@ -51,22 +62,21 @@ const game_read = async (req, res) => {
 
 const game_update = async (req, res) => {
   try {
-    await Game.findByIdAndUpdate(
-      { _id: id },
-      { $set: { 
+    const newGame = await Game.findByIdAndUpdate(
+        { _id: req.params.id },
+        {
         title: req.body.title,
         summary: req.body.summary,
         edition: req.body.edition,
         review: req.body.review,
         price: req.body.price,
         discount: req.body.discount,
-        release: req.body.release,
+        release: req.body.release}
 //         platform: req.body.platform, // TODO ADD PLATFORM AND PUBLISHER DROPDOWN, and RE-ENABLE MODEL
 //         publisher: req.body.publisher, // TODO ADD PLATFORM AND PUBLISHER DROPDOWN, and RE-ENABLE MODEL
-        } }
     )
     console.log('Game updated! ('+newGame+')');
-    res.redirect('/');
+    res.redirect('/games');
   } catch(err) {
     console.error(err);
   }

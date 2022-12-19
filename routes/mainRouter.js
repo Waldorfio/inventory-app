@@ -9,13 +9,22 @@ const publisherController = require('../controllers/publisherController');
 // GAME ROUTES
 router.get('/games', gameController.index); // index
 // CREATE
-router.get('/game/create', async (req, res) => {res.render('gameform', {type: 'Create'})}); // CREATE FORM
+router.get('/game/create', async (req, res) => {res.render('gameform', {
+    type: 'Create',
+    action:'/game/create',
+    title: 'Sample Title',
+    summary: 'Sample Summary',
+    edition: 'Sample Edition',
+    review: 'Sample Review',
+    price: '69.99',
+    discount: '4.99',
+    release: '01/01/2022',
+})}); // CREATE FORM
 router.post('/game/create', gameController.game_create); // CREATE  // TODO ADD PLATFORM AND PUBLISHER DROPDOWN, and RE-ENABLE MODEL
 // READ
 router.get('/game/:id', gameController.game_read); // READ
 // UPDATE
-router.get('/game/:id/update', async (req, res) => {res.render('gameform', {type: 'Update'})}); // UPDATE FORM
-router.post('/game/:id/update', gameController.game_update); // UPDATE
+router.post('/game/:id', gameController.game_update); // UPDATE
 // DESTROY
 router.post('/game/:id/delete', gameController.game_destroy); // DESTROY
 
