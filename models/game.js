@@ -16,9 +16,9 @@ const GameSchema = new Schema({
 })
 
 // Virtual properties
-GameSchema.virtual('url').get(function() {
-    return '/gameLibrary/game' + this._id;
-})
+// GameSchema.virtual('url').get(function() {
+//     return '/gameLibrary/game' + this._id;
+// })
 
 // Virtual for date formatting
 GameSchema.virtual("release_formatted").get(function () {
