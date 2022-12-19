@@ -61,23 +61,31 @@ const game_update = async (req, res) => {
         price: req.body.price,
         discount: req.body.discount,
         release: req.body.release,
-        platform: req.body.platform,
-        publisher: req.body.publisher,
+//         platform: req.body.platform, // TODO ADD PLATFORM AND PUBLISHER DROPDOWN, and RE-ENABLE MODEL
+//         publisher: req.body.publisher, // TODO ADD PLATFORM AND PUBLISHER DROPDOWN, and RE-ENABLE MODEL
         } }
     )
-    console.log('Game updated! ('+req.body.name+')');
+    console.log('Game updated! ('+newGame+')');
+    res.redirect('/');
   } catch(err) {
     console.error(err);
   }
 }
 
 const game_destroy = async (req, res) => {
-  try {
-    await Publisher.findByIdAndDelete(req.params.id);
-    console.log('Game deleted! ('+req.params.id+')');
-  } catch(err) {
-    console.error(err);
-  }
+    const response = confirm("Delete game?");
+    if (response) {
+        try {
+            const foundGame = await Publisher.findByIdAndDelete(req.params.id);
+            console.log('Game deleted! ('+foundGame+')');
+            res.redirect('/games');
+        } catch(err) {
+            console.error(err);
+        }
+    } else {
+        console.log('Game not deleted.');
+        res.redirect('/games');
+    }
 }
 
 module.exports = {
