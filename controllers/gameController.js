@@ -18,7 +18,26 @@ const index = async (req, res, next) => {
     }
 }
 
-const game_create = async (req, res) => {
+// CREATE
+const game_create_get = async (req, res) => {
+  try {
+    res.render('gameform', {
+        type: 'Create',
+        action:'/game/create',
+        title: 'Sample Game',
+        summary: 'This is an example of a summary.',
+        edition: 'Standard Edition',
+        review: '6.6',
+        price: '69.99',
+        discount: '4.99',
+        release: new Date("2015-03-25"),
+//         platform: 'test',
+    })});
+  } catch(err) {
+    console.error(err);
+  }   
+}
+const game_create_post = async (req, res) => {
   try {
     console.log('Creating game...')
     const newGame = await Game.create({
@@ -29,8 +48,7 @@ const game_create = async (req, res) => {
       price: req.body.price,
       discount: req.body.discount,
       release: req.body.release,
-    //   platform: req.body.platform, // TODO ADD PLATFORM AND PUBLISHER DROPDOWN, and RE-ENABLE MODEL
-    //   publisher: req.body.publisher, // TODO ADD PLATFORM AND PUBLISHER DROPDOWN, and RE-ENABLE MODEL
+    //   platform: req.body.platform, // TODO ADD PLATFORM DROPDOWN, and RE-ENABLE MODEL
     })
     console.log('Game created! ('+newGame+')');
     res.redirect('/');
@@ -39,6 +57,7 @@ const game_create = async (req, res) => {
   }   
 }
 
+// READ
 const game_read = async (req, res) => {
   try {
     const foundgame = await Game.findById(req.params.id);
@@ -60,6 +79,7 @@ const game_read = async (req, res) => {
   }
 }
 
+// UPDATE
 const game_update = async (req, res) => {
   try {
     const newGame = await Game.findByIdAndUpdate(
@@ -72,8 +92,7 @@ const game_update = async (req, res) => {
         price: req.body.price,
         discount: req.body.discount,
         release: req.body.release}
-//         platform: req.body.platform, // TODO ADD PLATFORM AND PUBLISHER DROPDOWN, and RE-ENABLE MODEL
-//         publisher: req.body.publisher, // TODO ADD PLATFORM AND PUBLISHER DROPDOWN, and RE-ENABLE MODEL
+//         platform: req.body.platform, // TODO ADD PLATFORM DROPDOWN, and RE-ENABLE MODEL
     )
     console.log('Game updated! ('+newGame+')');
     res.redirect('/games');
@@ -82,7 +101,15 @@ const game_update = async (req, res) => {
   }
 }
 
-const game_destroy = async (req, res) => {
+// DESTROY
+const game_destroy_get = async (req, res) => {
+    try {
+        res.render('delete');
+    } catch(err) {
+        console.error(err);
+    }
+}
+const game_destroy_post = async (req, res) => {
     try {
         const foundGame = await Game.findByIdAndDelete(req.params.id);
         console.log('Game deleted! ('+foundGame+')');
@@ -93,9 +120,11 @@ const game_destroy = async (req, res) => {
 }
 
 module.exports = {
-  index,
-  game_create,
-  game_read,
-  game_update,
-  game_destroy,
+    index,
+    game_create_get,
+    game_create_post
+    game_read,
+    game_update,
+    game_destroy_get,
+    game_destroy_post,
 }
