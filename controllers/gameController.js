@@ -1,6 +1,5 @@
 const Game = require('../models/game');
 const Platform = require('../models/platform');
-const Publisher = require('../models/publisher');
 
 const { body, validationResult } = require('express-validator');
 const async = require('async');
@@ -32,7 +31,7 @@ const game_create_get = async (req, res) => {
         discount: '4.99',
         release: new Date("2015-03-25"),
 //         platform: 'test',
-    })});
+    })};
   } catch(err) {
     console.error(err);
   }   
