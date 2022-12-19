@@ -29,7 +29,7 @@ const game_create_get = async (req, res) => {
         review: '6.6',
         price: '69.99',
         discount: '4.99',
-        release: new Date("2015-03-25"),
+        release: '2015-03-25',
 //         platform: 'test',
     })};
   } catch(err) {
