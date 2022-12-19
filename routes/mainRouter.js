@@ -4,41 +4,24 @@ const router = express.Router();
 // Require controllers
 const gameController = require('../controllers/gameController');
 const platformController = require('../controllers/platformController');
-const publisherController = require('../controllers/publisherController');
 
 // GAME ROUTES
 router.get('/games', gameController.index); // index
 // CREATE
-router.get('/game/create', async (req, res) => {res.render('gameform', {
-    type: 'Create',
-    action:'/game/create',
-    title: 'Sample Title',
-    summary: 'Sample Summary',
-    edition: 'Sample Edition',
-    review: 'Sample Review',
-    price: '69.99',
-    discount: '4.99',
-    release: '01/01/2022',
-})}); // CREATE FORM
-router.post('/game/create', gameController.game_create); // CREATE  // TODO ADD PLATFORM AND PUBLISHER DROPDOWN, and RE-ENABLE MODEL
+router.get('/game/create', gameController.game_create_get); // redirect to game create form
+router.post('/game/create', gameController.game_create_post); // TODO ADD PLATFORM AND PUBLISHER DROPDOWN, and RE-ENABLE MODEL
 // READ
 router.get('/game/:id', gameController.game_read);
 // UPDATE
 router.post('/game/:id', gameController.game_update);
 // DESTROY
-router.get('/game/:id/delete', async (req, res) => {res.render('delete')}); // redirect to delete.ejs
-router.post('/game/:id/delete', gameController.game_destroy); // process delete.js submit button
+router.get('/game/:id/delete', gameController.game_destroy_get); // redirect to delete page, asking to confirm deletion
+router.post('/game/:id/delete', gameController.game_destroy_post); // process delete.js submit button
 
 // PLATFORM ROUTES
 router.post('./platform/create', platformController.platform_create); // CREATE
 router.get('./platform/:id', platformController.platform_read); // READ
 router.post('./platform/:id/update', platformController.platform_update); // UPDATE
 router.post('./platform/:id', platformController.platform_destroy); // DESTROY
-
-// PUBLISHER ROUTES
-router.post('./publisher/create', publisherController.publisher_create); // CREATE
-router.get('./publisher/:id', publisherController.publisher_read); // READ
-router.post('./publisher/:id/update', publisherController.publisher_update); // UPDATE
-router.post('./publisher/:id', publisherController.publisher_destroy); // DESTROY
 
 module.exports = router;
