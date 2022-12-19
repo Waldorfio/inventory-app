@@ -8,6 +8,7 @@ An inventory management API, with CRUD capabilities. Created using Node.js, Expr
 
 ### Goals
 - Practice creating a full-fledged Express app, with CRUD capabilities
+- Created using minimal CSS to practice building backend features
 
 ### Challenges Faced
 - Managing controllers, models and route structure efficiently.
