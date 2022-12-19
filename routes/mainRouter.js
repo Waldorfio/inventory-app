@@ -22,11 +22,12 @@ router.get('/game/create', async (req, res) => {res.render('gameform', {
 })}); // CREATE FORM
 router.post('/game/create', gameController.game_create); // CREATE  // TODO ADD PLATFORM AND PUBLISHER DROPDOWN, and RE-ENABLE MODEL
 // READ
-router.get('/game/:id', gameController.game_read); // READ
+router.get('/game/:id', gameController.game_read);
 // UPDATE
-router.post('/game/:id', gameController.game_update); // UPDATE
+router.post('/game/:id', gameController.game_update);
 // DESTROY
-router.post('/game/:id/delete', gameController.game_destroy); // DESTROY
+router.get('/game/:id/delete', async (req, res) => {res.render('delete')}); // redirect to delete.ejs
+router.post('/game/:id/delete', gameController.game_destroy); // process delete.js submit button
 
 // PLATFORM ROUTES
 router.post('./platform/create', platformController.platform_create); // CREATE

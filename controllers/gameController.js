@@ -83,18 +83,12 @@ const game_update = async (req, res) => {
 }
 
 const game_destroy = async (req, res) => {
-    const response = confirm("Delete game?");
-    if (response) {
-        try {
-            const foundGame = await Publisher.findByIdAndDelete(req.params.id);
-            console.log('Game deleted! ('+foundGame+')');
-            res.redirect('/games');
-        } catch(err) {
-            console.error(err);
-        }
-    } else {
-        console.log('Game not deleted.');
+    try {
+        const foundGame = await Game.findByIdAndDelete(req.params.id);
+        console.log('Game deleted! ('+foundGame+')');
         res.redirect('/games');
+    } catch(err) {
+        console.error(err);
     }
 }
 
