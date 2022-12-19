@@ -7,9 +7,9 @@ const PlatformSchema = new Schema({
 })
 
 // Virtual properties
-PlatformSchema.virtual('url').get(function() {
-    return '/gameLibrary/platform' + this._id;
-})
+// PlatformSchema.virtual('url').get(function() {
+//     return '/gameLibrary/platform' + this._id;
+// })
 
 // Export model
 module.exports = mongoose.model("Platform", PlatformSchema);
