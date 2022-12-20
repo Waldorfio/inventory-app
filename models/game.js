@@ -5,20 +5,15 @@ const Schema = mongoose.Schema;
 
 const GameSchema = new Schema({
     title: { type: String, required: true },
-    summary: { type: String, required: true },
+    summary: { type: String },
     edition: { type: String, required: true },
-    review: { type: String, required: true },
+    review: { type: Number, required: true },
     price: { type: Number, required: true },
-    discount: { type: Number, required: true },
+    discount: { type: Number },
     release: { type: Date, required: true, default: Date.now },
-    // platform: [{ type: Schema.ObjectId, ref: "Platform" }],
-    // publisher: [{ type: Schema.ObjectId, ref: "Publisher" }],
+    platform: { type: String, required: true },
+    // platform: [{ type: Schema.ObjectId, ref: "Platform" }]
 })
-
-// Virtual properties
-// GameSchema.virtual('url').get(function() {
-//     return '/gameLibrary/game' + this._id;
-// })
 
 // Virtual for date formatting
 GameSchema.virtual("release_formatted").get(function () {
