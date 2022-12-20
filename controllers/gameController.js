@@ -30,7 +30,7 @@ const game_create_get = async (req, res) => {
         discount: '4.99',
         release: '2015-03-25',
 //         platform: 'test',
-    })};
+    });
   } catch(err) {
     console.error(err);
   }   
