@@ -8,8 +8,11 @@
     <input name='price' type="number"  value=<%= price %> placeholder="Price">
     <input name='discount' type="number" value=<%= discount %> placeholder="Discount">
     <input name='release' type="date" value=<%= release %> placeholder="Release Date">
-    <!-- <input name='platform' type="text" placeholder="Platform *TODO DROPDOWN">
-    <input name='publisher' type="text" placeholder="Publisher *TODO DROPDOWN"> -->
+    <select name="platform">
+        <% for(const platform of platform_list) {%>
+            <option value = <%= platform.name.replace(' ','_') %> ><%= platform.name %></option>
+        <% } %>
+    </select>
     <input type="submit" value=<%= type %>>
 </form>
 <a href="/">Return Home</a>
