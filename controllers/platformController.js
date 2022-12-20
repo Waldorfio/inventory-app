@@ -22,7 +22,7 @@ const game_create_get = async (req, res) => {
     res.render('platformform', {
         action: '/platform/create',
         name: 'Platform Example',
-    })};
+    });
   } catch(err) {
     console.error(err);
   }   
