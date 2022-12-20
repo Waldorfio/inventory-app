@@ -5,13 +5,12 @@ const { body, validationResult } = require('express-validator');
 const async = require('async');
 
 // TODO: exports.index
-const index = async (req, res, next) => {
+const games_page = async (req, res, next) => {
     try {
         const game_list = await Game.find();
         res.render('games', {
             games: game_list
         });
-
     } catch(err) {
         console.error(err);
     }
@@ -119,7 +118,7 @@ const game_destroy_post = async (req, res) => {
 }
 
 module.exports = {
-    index,
+    games_page,
     game_create_get,
     game_create_post
     game_read,
