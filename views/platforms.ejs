@@ -1,0 +1,12 @@
+<h1>This a test page to display all platforms</h1>
+<h2>Platforms:</h2>
+<p></p>
+<% for(const platform of platforms) { %>
+  <div class='platform-container'>
+    <h3><%= platform.name %></h3>
+    <a href=<%='/platform/'+platform.id%>>Edit</a>
+    <a href=<%='/platform/'+platform.id+'/delete'%>>Delete</a>
+  </div>
+<% } %>
+
+<a href="/">return home</a>
