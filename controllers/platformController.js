@@ -17,7 +17,7 @@ const platforms_page = async (req, res, next) => {
 }
 
 // CREATE
-const game_create_get = async (req, res) => {
+const platform_create_get = async (req, res) => {
   try {
     res.render('platformform', {
         action: '/platform/create',
