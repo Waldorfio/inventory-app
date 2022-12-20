@@ -120,7 +120,7 @@ const game_destroy_post = async (req, res) => {
 module.exports = {
     games_page,
     game_create_get,
-    game_create_post
+    game_create_post,
     game_read,
     game_update,
     game_destroy_get,
