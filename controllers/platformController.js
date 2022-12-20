@@ -85,6 +85,7 @@ const platform_destroy_post = async (req, res) => {
 }
 
 module.exports = {
+  platforms_page,
   platform_create_get,
   platform_create_post,
   platform_read,
