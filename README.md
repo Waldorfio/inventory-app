@@ -1,7 +1,7 @@
 # Inventory: An interactive Game Library App
 
 An inventory management API, with CRUD capabilities. Created using Node.js, Express, and MongoDB.
-## [Live Link 👈](https://inventory-app-production-f822.up.railway.app/)
+## [Live Link 👈](https://inventory-app-production-00d6.up.railway.app/)
 
 ### Features
 - Create, Read, Update, and Destroy game models managed using MongoDB
